@@ -75,3 +75,8 @@ body {
 .header-container >ul >li:hover {
   cursor: pointer;
 }
+
+.task {
+  background-color: var(--bg-color);
+  border-bottom: 0.2em outset var(--border-color);
+}
