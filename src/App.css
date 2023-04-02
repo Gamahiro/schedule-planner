@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap');
+
 :root {
   --bg-color: #0F0A1F;
   --sec-color: #7D53DE;
@@ -13,6 +15,7 @@ body {
   flex-direction: column;
   align-items: center;
   margin-top: 1em;
+  font-family: 'Tilt Neon', cursive;
 }
 
 .card-container {
@@ -51,29 +54,23 @@ body {
   padding-left: 0.5em;
   padding-right: 0.5em;
   box-shadow: rgba(255, 255, 255, 0.568) 0px 3px 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .header-container > ul{
   list-style: none;
   padding: 0;
+  margin: 0;
   display: flex;
+  flex-direction: row;
+  width: 100%;
   justify-content: space-between;
 }
 
 .header-container > ul > li {
-  background-color: var(--sec-color);
-  border: 0.1em outset var(--border-color);
   padding: 0.2em;
-  user-select: none;
-}
-
-.header-container >ul >li:active {
-  border: 0.1em inset var(--border-color);
-  filter: brightness(80%);
-}
-
-.header-container >ul >li:hover {
-  cursor: pointer;
 }
 
 .task {
@@ -95,4 +92,23 @@ body {
 .taskFieldset > p {
   display: flex;
   flex-direction: column;
+}
+
+.button {
+  border: 0.1em outset var(--border-color);
+  box-shadow: var(--tert-color) 0px 3px 8px;
+  background-color: var(--sec-color);
+  color: var(--text-color);
+  user-select: none;
+
+}
+
+.button:active {
+  filter: brightness(80%);
+  border: 0.1em inset var(--border-color);
+
+}
+
+.button:hover {
+  cursor: pointer;
 }
