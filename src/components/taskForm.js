@@ -22,9 +22,8 @@ const TaskForm = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
         let newTask = new taskObj(taskName, taskTime, props.day, taskDescr, false);
-        console.log(newTask)
+        props.setTasks([...props.tasks, newTask]);
     }
 
     return (

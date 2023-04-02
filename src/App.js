@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './App.css';
 import { Header } from './components/header';
 import { Schedule } from './components/schedule';
@@ -11,16 +12,17 @@ let newTask5 = new taskObj('Shopping', 1800, 5, 'Just chill2');
 let newTask6 = new taskObj('Exercise', 1200, 7, 'Just chill2');
 
 
-let scheduleArray = [newTask, newTask2, newTask3, newTask4, newTask5, newTask6]
-
 
 
 function App() {
+
+const [tasks, setTasks] = useState([]);
+
+
   return (
     <div>
     <Header></Header>
-   <Schedule tasks={scheduleArray}/>
-
+   <Schedule tasks={tasks} setTasks={setTasks}/>
     </div>
   );
 }

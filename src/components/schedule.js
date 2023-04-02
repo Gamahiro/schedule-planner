@@ -29,14 +29,15 @@ let day7 = [];
     return (
         <div className="schedule-container">
 
-            <Card tasks={day1} />
-            <Card tasks={day2} />
-            <Card tasks={day3} />
-            <Card tasks={day4} />
-            <Card tasks={day5} />
-            <Card tasks={day6} />
-            <Card tasks={day7} />
-            <TaskForm></TaskForm>
+            <Card tasks={day1} day={1} allTasks={props.tasks} setTasks={props.setTasks} />
+            <Card tasks={day2} day={2} allTasks={props.tasks} setTasks={props.setTasks} />
+            <Card tasks={day3} day={3} allTasks={props.tasks} setTasks={props.setTasks} />
+            <Card tasks={day4} day={4} allTasks={props.tasks} setTasks={props.setTasks} />
+            <Card tasks={day5} day={5} allTasks={props.tasks} setTasks={props.setTasks} />
+            <Card tasks={day6} day={6} allTasks={props.tasks} setTasks={props.setTasks} />
+            <Card tasks={day7} day={7} allTasks={props.tasks} setTasks={props.setTasks} />
+            { //<TaskForm tasks={props.tasks} setTasks={props.setTasks}></TaskForm> 
+            }
         </div>
     )
 

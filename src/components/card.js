@@ -1,4 +1,5 @@
 import React from "react";
+import { TaskForm } from "./taskForm";
 
 const Task = (props) => {
     return (
@@ -13,6 +14,14 @@ const Task = (props) => {
 
 
 const Card = (props) => {
+
+    const createForm = () => {
+           return (
+            <TaskForm tasks={props.allTasks} setTasks={props.setTasks}></TaskForm>
+           )
+
+    }
+
     return (
         <div className="card-container">
             <div className="card-title"> Day </div>
@@ -25,7 +34,7 @@ const Card = (props) => {
                     })
                 }
             </div>
-            <div style={{textAlign: "center"}}>+</div>
+            <div style={{textAlign: "center"}} onClick={createForm}>+</div>
         </div>
     )
 
