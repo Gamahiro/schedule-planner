@@ -1,6 +1,5 @@
 import React from "react";
 import { Card } from "./card";
-import { TaskForm } from "./taskForm";
 
 const Schedule = (props) => {
 let day1 = [];
@@ -36,8 +35,6 @@ let day7 = [];
             <Card tasks={day5} day={5} allTasks={props.tasks} setTasks={props.setTasks} />
             <Card tasks={day6} day={6} allTasks={props.tasks} setTasks={props.setTasks} />
             <Card tasks={day7} day={7} allTasks={props.tasks} setTasks={props.setTasks} />
-            { //<TaskForm tasks={props.tasks} setTasks={props.setTasks}></TaskForm> 
-            }
         </div>
     )
 

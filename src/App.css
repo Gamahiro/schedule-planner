@@ -1,5 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap');
 
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
+
+
 :root {
   --bg-color: #0F0A1F;
   --sec-color: #7D53DE;
@@ -76,6 +86,7 @@ body {
 .task {
   background-color: var(--bg-color);
   border-bottom: 0.2em outset var(--border-color);
+  transition: 0.5s ease-in-out;
 }
 
 .taskForm {
@@ -109,6 +120,10 @@ body {
 
 }
 
-.button:hover {
+.button:hover, .expandbtn:hover {
   cursor: pointer;
+}
+
+.expandbtn {
+  user-select: none;
 }

@@ -1,6 +1,6 @@
 
 
-function taskObj(taskTitle, taskTime, taskDay, taskDescr, completed) {
+function TaskObj(taskTitle, taskTime, taskDay, taskDescr, completed) {
     
     this.taskTitle = taskTitle;
     this.taskTime = taskTime;
@@ -8,6 +8,13 @@ function taskObj(taskTitle, taskTime, taskDay, taskDescr, completed) {
     this.taskDescr = taskDescr;
     this.completed = completed;
 
+    // create a setter for this, maybe change to object or class
+/*     Object.defineProperty(this, 'toggleCompleted', {
+        set() {
+            this.completed = !this.completed;
+        }
+    }) 
+ */
 }
 
-export {taskObj}
+export {TaskObj}

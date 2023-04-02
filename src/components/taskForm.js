@@ -1,5 +1,5 @@
 import React from "react";
-import { taskObj } from "../model/task";
+import { TaskObj } from "../model/task";
 
 const TaskForm = (props) => {
 
@@ -23,7 +23,7 @@ const TaskForm = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         props.togglePopup();
-        let newTask = new taskObj(taskName, taskTime, props.day, taskDescr, false);
+        let newTask = new TaskObj(taskName, taskTime, props.day, taskDescr, false);
         props.setTasks([...props.tasks, newTask]);
     }
 
