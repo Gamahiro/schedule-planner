@@ -2,11 +2,24 @@ import React, { useState } from "react";
 import { TaskForm } from "./taskForm";
 
 const Task = (props) => {
+
+    const [expand, setExpand] = useState(false);
+    const toggleExpand = () => {
+        setExpand(!expand);
+    }
+
+    console.log(props)
     return (
-        <div className="task">
+        <div 
+        className="task"
+        onClick={toggleExpand}>
             <div style={{ textAlign: "center", textDecoration: "underline" }}>{props.task.taskTime}</div>
             <input type={"checkbox"} />
             <span>{props.task.taskTitle}</span>
+            {
+                expand &&
+                <div style={{textAlign: "center"}}>{props.task.taskDescr}</div>
+            }
         </div>
     )
 }
@@ -20,12 +33,22 @@ const Card = (props) => {
         setPopup(!popup);
     }
 
+    const getDay = (day) => {
+        if(day === 1) return 'Monday';
+        else if (day === 2) return 'Tuesday'
+        else if (day === 3) return 'Wednesday'
+        else if (day === 4) return 'Thursday'
+        else if (day === 5) return 'Friday'
+        else if (day === 6) return 'Saturday'
+        else if (day === 7) return 'Sunday'
+
+    }
 
 
 
     return (
         <div className="card-container">
-            <div className="card-title"> Day </div>
+            <div className="card-title"> {getDay(props.day)} </div>
 
             {
                 popup &&          
@@ -41,7 +64,9 @@ const Card = (props) => {
                     })
                 }
             </div>
-            <div style={{ textAlign: "center" }} onClick={togglePopup}>+</div>
+            <div 
+            style={{ textAlign: "center", cursor: "pointer", userSelect:"none" }} 
+            onClick={togglePopup}>+</div>
         </div>
     )
 

@@ -32,7 +32,7 @@ const TaskForm = (props) => {
             <fieldset className="taskFieldset">
                 <legend>New Task</legend>
                 <div 
-                style={{ alignSelf: "flex-end", color: "red", width: "1em", textAlign: "center" }}
+                style={{ alignSelf: "flex-end", color: "red", width: "1em", textAlign: "center", cursor: "pointer", userSelect:"none" }}
                 onClick={props.togglePopup}
                 >x</div>
                 <p>
