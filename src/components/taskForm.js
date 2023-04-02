@@ -22,6 +22,7 @@ const TaskForm = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        props.togglePopup();
         let newTask = new taskObj(taskName, taskTime, props.day, taskDescr, false);
         props.setTasks([...props.tasks, newTask]);
     }
@@ -30,7 +31,10 @@ const TaskForm = (props) => {
         <form className="taskForm" onSubmit={handleSubmit}>
             <fieldset className="taskFieldset">
                 <legend>New Task</legend>
-                <div style={{ alignSelf: "flex-end", color: "red", width: "1em", textAlign: "center" }}>x</div>
+                <div 
+                style={{ alignSelf: "flex-end", color: "red", width: "1em", textAlign: "center" }}
+                onClick={props.togglePopup}
+                >x</div>
                 <p>
                     <label htmlFor="taskName">Task: </label>
                     <input type={"text"} name={"taskName"} id={"taskName"} onChange={handleTaskName}></input>
