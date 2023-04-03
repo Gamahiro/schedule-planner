@@ -9,13 +9,13 @@ import { Schedule } from './components/schedule';
 
 function App() {
 
-const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState([]);
 
 
   return (
     <div>
-    <Header></Header>
-   <Schedule tasks={tasks} setTasks={setTasks}/>
+      <Header></Header>
+      <Schedule tasks={tasks} setTasks={setTasks} />
     </div>
   );
 }
