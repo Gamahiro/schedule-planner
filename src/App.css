@@ -57,7 +57,7 @@ body {
 }
 
 .header-container {
-  background-color: var(--text-color);
+  background-color: var(--sec-color);
   height: 3em;
   margin-bottom: 1em;
   border: 0.1em outset var(--border-color);
@@ -108,7 +108,7 @@ body {
 .button {
   border: 0.1em outset var(--border-color);
   box-shadow: var(--tert-color) 0px 3px 8px;
-  background-color: var(--sec-color);
+  background-color: var(--bg-color);
   color: var(--text-color);
   user-select: none;
 

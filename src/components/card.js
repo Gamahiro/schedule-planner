@@ -14,7 +14,7 @@ const Task = (props) => {
         }
     }
 
-    const [edit, setEdit] = useState(true);
+    const [edit, setEdit] = useState(false);
 
     const toggleEdit = () => {
         setEdit(!edit);
@@ -42,7 +42,7 @@ const Task = (props) => {
     }
 
     const handleTaskDay = (e) => {
-        setTaskDay(e.target.value);
+        setTaskDay(Number(e.target.value));
     }
 
 
@@ -59,25 +59,31 @@ const Task = (props) => {
     if (edit) {
         return (
             <form
+            style={{width: "100%"}}
                 className="task"
                 onSubmit={handleSubmit}
             >
                 <input
                     type={"time"}
                     style={{}}
-                    value={props.task.taskTime}
+                    defaultValue={props.task.getTaskTime}
                     onChange={handleTaskTime}
+                    name={'time'}
                 ></input>
                 <div>
                     <input
                         type={"checkbox"}
                         onChange={toggleComplete}
-                        value={props.task.completed}
+                        defaultValue={props.task.completed}
+                    name={'completed'}
+
                     />
                     <input
                         type={"text"}
-                        value={props.task.taskTitle}
+                        defaultValue={props.task.taskTitle}
                         onChange={handleTaskName}
+                    name={'name'}
+
                     ></input>
 
                 </div>
@@ -85,13 +91,16 @@ const Task = (props) => {
 
                 <textarea
                     style={{ textAlign: "center" }}
-                    value={props.task.taskDescr}
+                    defaultValue={props.task.taskDescr}
                     onChange={handleTaskDescr}
+                    name={'descr'}
+
                 ></textarea>
 
                 <select
                     name="day"
                     onChange={handleTaskDay}
+                    defaultValue={props.task.taskDay}
                 >
                     <option value="1">Monday</option>
                     <option value="2">Tuesday</option>

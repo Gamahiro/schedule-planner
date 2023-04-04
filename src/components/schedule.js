@@ -1,5 +1,7 @@
 import React from "react";
+import { getTasks } from "../model/firebaseDB";
 import { Card } from "./card";
+
 
 const Schedule = (props) => {
 let day1 = [];
@@ -11,6 +13,7 @@ let day6 = [];
 let day7 = [];
 
 
+console.log(props.tasks)
 
     props.tasks.forEach(element => {
         if (element.taskDay === 1) day1.push(element)

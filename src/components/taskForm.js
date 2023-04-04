@@ -1,4 +1,5 @@
 import React from "react";
+import { taskToDB } from "../model/firebaseDB";
 import { TaskObj } from "../model/task";
 
 const TaskForm = (props) => {
@@ -25,15 +26,17 @@ const TaskForm = (props) => {
         props.togglePopup();
         let newTask = new TaskObj(taskName, taskTime, props.day, taskDescr, false);
         props.setTasks([...props.tasks, newTask]);
+        taskToDB(newTask);
+
     }
 
     return (
         <form className="taskForm" onSubmit={handleSubmit}>
             <fieldset className="taskFieldset">
                 <legend>New Task</legend>
-                <div 
-                style={{ alignSelf: "flex-end", color: "red", width: "1em", textAlign: "center", cursor: "pointer", userSelect:"none" }}
-                onClick={props.togglePopup}
+                <div
+                    style={{ alignSelf: "flex-end", color: "red", width: "1em", textAlign: "center", cursor: "pointer", userSelect: "none" }}
+                    onClick={props.togglePopup}
                 >x</div>
                 <p>
                     <label htmlFor="taskName">Task: </label>
