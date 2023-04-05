@@ -34,7 +34,6 @@ async function getTasks() {
     taskSnapshot.forEach((doc) => {
         taskarr.push(doc.data())
     })
-    console.log(taskarr)
     return taskarr;
 }
 
