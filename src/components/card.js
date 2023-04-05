@@ -174,7 +174,7 @@ const Card = (props) => {
 
             {
                 popup &&
-                <TaskForm tasks={props.allTasks} setTasks={props.setTasks} day={props.day} togglePopup={togglePopup}></TaskForm>
+                <TaskForm tasks={props.allTasks} taskRef={props.taskRef} day={props.day} togglePopup={togglePopup} getTasks={props.getTasks}></TaskForm>
             }
 
             <div className="card-content">

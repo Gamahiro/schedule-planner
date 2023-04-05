@@ -39,4 +39,4 @@ async function getTasks() {
 
 
 
-export {taskToDB, getTasks}
+export {db}

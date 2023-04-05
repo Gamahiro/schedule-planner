@@ -1,6 +1,7 @@
+import { addDoc } from "firebase/firestore";
 import React from "react";
-import { taskToDB } from "../model/firebaseDB";
 import { TaskObj } from "../model/task";
+
 
 const TaskForm = (props) => {
 
@@ -21,12 +22,21 @@ const TaskForm = (props) => {
         setTaskDescr(e.target.value)
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         props.togglePopup();
-        let newTask = new TaskObj(taskName, taskTime, props.day, taskDescr, false);
-        props.setTasks([...props.tasks, newTask]);
-        taskToDB(newTask);
+        try {
+        await addDoc(props.taskRef, {
+            taskTitle: taskName,
+            taskTime: taskTime,
+            taskDay: props.day,
+            taskDescr: taskDescr,
+            taskComplete: false
+        })
+        } catch (error) {
+            console.error(error)
+        }
+        props.getTasks();
 
     }
 
