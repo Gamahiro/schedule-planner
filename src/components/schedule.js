@@ -13,7 +13,7 @@ let day6 = [];
 let day7 = [];
 
 
-console.log(props.tasks)
+console.log(props)
 
 if(props.tasks === undefined) return;
     props.tasks.forEach(element => {
@@ -28,17 +28,16 @@ if(props.tasks === undefined) return;
 
 
 
-
     return (
         <div className="schedule-container">
 
-            <Card tasks={day1} day={1} allTasks={props.tasks} taskRef={props.taskRef} getTasks={props.getTasks}/>
-            <Card tasks={day2} day={2} allTasks={props.tasks} taskRef={props.taskRef} getTasks={props.getTasks}/>
-            <Card tasks={day3} day={3} allTasks={props.tasks} taskRef={props.taskRef} getTasks={props.getTasks}/>
-            <Card tasks={day4} day={4} allTasks={props.tasks} taskRef={props.taskRef} getTasks={props.getTasks}/>
-            <Card tasks={day5} day={5} allTasks={props.tasks} taskRef={props.taskRef} getTasks={props.getTasks}/>
-            <Card tasks={day6} day={6} allTasks={props.tasks} taskRef={props.taskRef} getTasks={props.getTasks}/>
-            <Card tasks={day7} day={7} allTasks={props.tasks} taskRef={props.taskRef} getTasks={props.getTasks}/>
+            <Card tasks={day1} day={1} allTasks={props.tasks} taskRef={props.taskRef} getTasks={props.getTasks} deleteTask={props.deleteTask}/>
+            <Card tasks={day2} day={2} allTasks={props.tasks} taskRef={props.taskRef} getTasks={props.getTasks} deleteTask={props.deleteTask}/>
+            <Card tasks={day3} day={3} allTasks={props.tasks} taskRef={props.taskRef} getTasks={props.getTasks} deleteTask={props.deleteTask}/>
+            <Card tasks={day4} day={4} allTasks={props.tasks} taskRef={props.taskRef} getTasks={props.getTasks} deleteTask={props.deleteTask}/>
+            <Card tasks={day5} day={5} allTasks={props.tasks} taskRef={props.taskRef} getTasks={props.getTasks} deleteTask={props.deleteTask}/>
+            <Card tasks={day6} day={6} allTasks={props.tasks} taskRef={props.taskRef} getTasks={props.getTasks} deleteTask={props.deleteTask}/>
+            <Card tasks={day7} day={7} allTasks={props.tasks} taskRef={props.taskRef} getTasks={props.getTasks} deleteTask={props.deleteTask}/>
         </div>
     )
 

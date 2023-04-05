@@ -3,7 +3,7 @@ import './App.css';
 import { Header } from './components/header';
 import { Schedule } from './components/schedule';
 import { db } from './model/firebaseDB';
-import { getDocs, collection } from 'firebase/firestore'
+import { getDocs, collection, deleteDoc, doc } from 'firebase/firestore'
 
 
 
@@ -27,20 +27,20 @@ function App() {
     }
   }
 
+  const deleteTask = async (id) => {
+    const taskDoc = doc(db, "tasks", id)
+    await deleteDoc(taskDoc);
+    getTasks();
+  }
+
   useEffect(() => {
     getTasks();
   }, [])
 
-  
-
-
-
-  //const [tasks, setTasks] = useState(getTasks().then((result) => {return result}));
-
   return (
     <div>
       <Header></Header>
-      <Schedule tasks={tasks} taskRef={tasksCollectionRef} getTasks={getTasks}/>
+      <Schedule tasks={tasks} taskRef={tasksCollectionRef} getTasks={getTasks} deleteTask={deleteTask} />
     </div>
   );
 }

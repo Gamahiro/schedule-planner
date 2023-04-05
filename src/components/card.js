@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { TaskForm } from "./taskForm";
 
 const Task = (props) => {
-
     const [expand, setExpand] = useState(false);
     const toggleExpand = (e) => {
         setExpand(!expand);
@@ -58,62 +57,65 @@ const Task = (props) => {
 
     if (edit) {
         return (
-            <form
-            style={{width: "100%"}}
-                className="task"
-                onSubmit={handleSubmit}
-            >
-                <input
-                    type={"time"}
-                    style={{}}
-                    defaultValue={props.task.getTaskTime}
-                    onChange={handleTaskTime}
-                    name={'time'}
-                ></input>
-                <div>
-                    <input
-                        type={"checkbox"}
-                        onChange={toggleComplete}
-                        defaultValue={props.task.completed}
-                    name={'completed'}
-
-                    />
-                    <input
-                        type={"text"}
-                        defaultValue={props.task.taskTitle}
-                        onChange={handleTaskName}
-                    name={'name'}
-
-                    ></input>
-
-                </div>
-
-
-                <textarea
-                    style={{ textAlign: "center" }}
-                    defaultValue={props.task.taskDescr}
-                    onChange={handleTaskDescr}
-                    name={'descr'}
-
-                ></textarea>
-
-                <select
-                    name="day"
-                    onChange={handleTaskDay}
-                    defaultValue={props.task.taskDay}
+            <div>
+                <button onClick={() => props.deleteTask(props.task.id)}>Delete</button>
+                <form
+                    style={{ width: "100%" }}
+                    className="task"
+                    onSubmit={handleSubmit}
                 >
-                    <option value="1">Monday</option>
-                    <option value="2">Tuesday</option>
-                    <option value="3">Wednesday</option>
-                    <option value="4">Thursday</option>
-                    <option value="5">Friday</option>
-                    <option value="6">Saturday</option>
-                    <option value="7">Sunday</option>
-                </select>
+                    <input
+                        type={"time"}
+                        style={{}}
+                        defaultValue={props.task.getTaskTime}
+                        onChange={handleTaskTime}
+                        name={'time'}
+                    ></input>
+                    <div>
+                        <input
+                            type={"checkbox"}
+                            onChange={toggleComplete}
+                            defaultValue={props.task.completed}
+                            name={'completed'}
 
-                <button type={"submit"}>Edit</button>
+                        />
+                        <input
+                            type={"text"}
+                            defaultValue={props.task.taskTitle}
+                            onChange={handleTaskName}
+                            name={'name'}
 
-            </form>
+                        ></input>
+
+                    </div>
+
+
+                    <textarea
+                        style={{ textAlign: "center" }}
+                        defaultValue={props.task.taskDescr}
+                        onChange={handleTaskDescr}
+                        name={'descr'}
+
+                    ></textarea>
+
+                    <select
+                        name="day"
+                        onChange={handleTaskDay}
+                        defaultValue={props.task.taskDay}
+                    >
+                        <option value="1">Monday</option>
+                        <option value="2">Tuesday</option>
+                        <option value="3">Wednesday</option>
+                        <option value="4">Thursday</option>
+                        <option value="5">Friday</option>
+                        <option value="6">Saturday</option>
+                        <option value="7">Sunday</option>
+                    </select>
+
+                    <button type={"submit"}>Edit</button>
+
+                </form>
+            </div>
         )
     }
 
@@ -181,7 +183,7 @@ const Card = (props) => {
                 {
                     props.tasks.map((element, index) => {
                         return (
-                            <Task key={index} task={element} />
+                            <Task key={index} task={element} deleteTask={props.deleteTask}/>
                         )
                     })
                 }
