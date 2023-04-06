@@ -3,7 +3,7 @@ import './App.css';
 import { Header } from './components/header';
 import { Schedule } from './components/schedule';
 import { db } from './model/firebaseDB';
-import { getDocs, collection, deleteDoc, doc } from 'firebase/firestore'
+import { getDocs, collection, deleteDoc, doc, updateDoc } from 'firebase/firestore'
 
 
 
@@ -33,6 +33,18 @@ function App() {
     getTasks();
   }
 
+  const updateTask = async (task) => {
+    const taskDoc = doc(db, "tasks", task.id)
+    await updateDoc(taskDoc, {
+      taskTitle: task.taskTitle,
+      taskDescr: task.taskDescr,
+      taskDay: task.taskDay,
+      taskTime: task.taskTime,
+      taskCompleted: task.taskCompleted
+    })
+    getTasks();
+  }
+
   useEffect(() => {
     getTasks();
   }, [])
@@ -40,7 +52,7 @@ function App() {
   return (
     <div>
       <Header></Header>
-      <Schedule tasks={tasks} taskRef={tasksCollectionRef} getTasks={getTasks} deleteTask={deleteTask} />
+      <Schedule tasks={tasks} taskRef={tasksCollectionRef} getTasks={getTasks} deleteTask={deleteTask} updateTask={updateTask}/>
     </div>
   );
 }

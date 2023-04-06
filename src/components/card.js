@@ -19,17 +19,30 @@ const Task = (props) => {
         setEdit(!edit);
     }
 
-    const toggleComplete = () => {
-        return props.task.setCompleted = !props.task.getCompleted
-    }
 
-    const [taskName, setTaskName] = useState(props.task.taskName);
+
+    const [taskTitle, setTaskTitle] = useState(props.task.taskTitle);
     const [taskTime, setTaskTime] = useState(props.task.taskTime);
     const [taskDescr, setTaskDescr] = useState(props.task.taskDescr);
     const [taskDay, setTaskDay] = useState(props.task.taskDay);
+    const [taskCompleted, setTaskCompleted] = useState(props.task.taskCompleted);
+
+    const toggleComplete = (e) => {
+        setTaskCompleted(e.target.checked)
+        props.getTasks();
+        props.updateTask({
+            id: props.task.id,
+            taskTitle: taskTitle,
+            taskDescr: taskDescr,
+            taskDay: taskDay,
+            taskTime: taskTime,
+            taskCompleted: !taskCompleted
+        })
+        props.getTasks();
+    }
 
     const handleTaskName = (e) => {
-        setTaskName(e.target.value);
+        setTaskTitle(e.target.value);
     }
 
     const handleTaskTime = (e) => {
@@ -44,15 +57,25 @@ const Task = (props) => {
         setTaskDay(Number(e.target.value));
     }
 
+    const handleTaskCompleted = (e) => {
+        setTaskCompleted(e.target.checked)
+
+    }
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        props.task.setTaskName = taskName;
-        props.task.setTaskTime = taskTime;
-        props.task.setTaskDescr = taskDescr;
-        props.task.setTaskDay = taskDay;
-
+        props.getTasks();
+        props.updateTask({
+            id: props.task.id,
+            taskTitle: taskTitle,
+            taskDescr: taskDescr,
+            taskDay: taskDay,
+            taskTime: taskTime,
+            taskCompleted: taskCompleted
+        })
         toggleEdit();
+        props.getTasks();
     }
 
     if (edit) {
@@ -60,7 +83,7 @@ const Task = (props) => {
             <div>
                 <button onClick={() => props.deleteTask(props.task.id)}>Delete</button>
                 <form
-                    style={{ width: "100%" }}
+                    style={{ width: "100%"}}
                     className="task"
                     onSubmit={handleSubmit}
                 >
@@ -74,8 +97,8 @@ const Task = (props) => {
                     <div>
                         <input
                             type={"checkbox"}
-                            onChange={toggleComplete}
-                            defaultValue={props.task.completed}
+                            onChange={handleTaskCompleted}
+                            checked={taskCompleted}
                             name={'completed'}
 
                         />
@@ -84,7 +107,7 @@ const Task = (props) => {
                             defaultValue={props.task.taskTitle}
                             onChange={handleTaskName}
                             name={'name'}
-
+                            style={{width: "100%"}}
                         ></input>
 
                     </div>
@@ -130,7 +153,9 @@ const Task = (props) => {
                 <div>
                     <input
                         type={"checkbox"}
+                        checked={taskCompleted}
                         onChange={toggleComplete}
+                        name={'submitComplete'}
                     />
                     <span>{props.task.taskTitle}</span>
                 </div>
@@ -183,7 +208,7 @@ const Card = (props) => {
                 {
                     props.tasks.map((element, index) => {
                         return (
-                            <Task key={index} task={element} deleteTask={props.deleteTask}/>
+                            <Task key={index} task={element} deleteTask={props.deleteTask} updateTask={props.updateTask} getTasks={props.getTasks} />
                         )
                     })
                 }

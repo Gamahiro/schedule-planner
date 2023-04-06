@@ -31,7 +31,7 @@ const TaskForm = (props) => {
             taskTime: taskTime,
             taskDay: props.day,
             taskDescr: taskDescr,
-            taskComplete: false
+            taskCompleted: false
         })
         } catch (error) {
             console.error(error)
