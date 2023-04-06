@@ -138,6 +138,7 @@ const Task = (props) => {
                     </select>
 
                     <button type={"submit"}>Edit</button>
+                    <button onClick={toggleEdit}>Cancel</button>
 
                 </form>
             </div>
