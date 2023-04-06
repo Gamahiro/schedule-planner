@@ -81,7 +81,6 @@ const Task = (props) => {
     if (edit) {
         return (
             <div>
-                <button onClick={() => props.deleteTask(props.task.id)}>Delete</button>
                 <form
                     style={{ width: "100%"}}
                     className="task"
@@ -94,7 +93,11 @@ const Task = (props) => {
                         onChange={handleTaskTime}
                         name={'time'}
                     ></input>
-                    <div>
+                <button 
+                className="button"
+                style={{backgroundColor: "red"}}
+                onClick={() => props.deleteTask(props.task.id)}>Delete</button>
+                    <div style={{display: "flex", flexDirection: "column"}}>
                         <input
                             type={"checkbox"}
                             onChange={handleTaskCompleted}
@@ -107,7 +110,6 @@ const Task = (props) => {
                             defaultValue={props.task.taskTitle}
                             onChange={handleTaskName}
                             name={'name'}
-                            style={{width: "100%"}}
                         ></input>
 
                     </div>

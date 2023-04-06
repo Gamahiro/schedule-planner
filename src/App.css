@@ -127,3 +127,9 @@ body {
 .expandbtn {
   user-select: none;
 }
+
+.task {
+display: flex;
+flex-direction: column;
+
+}
