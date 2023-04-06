@@ -195,7 +195,9 @@ const Card = (props) => {
 
     }
 
-
+    const sortedTasks = props.tasks.sort(function(a, b) {
+        return a.taskTime.localeCompare(b.taskTime)
+    })
 
     return (
         <div className="card-container">
@@ -208,7 +210,7 @@ const Card = (props) => {
 
             <div className="card-content">
                 {
-                    props.tasks.map((element, index) => {
+                    sortedTasks.map((element, index) => {
                         return (
                             <Task key={index} task={element} deleteTask={props.deleteTask} updateTask={props.updateTask} getTasks={props.getTasks} />
                         )
