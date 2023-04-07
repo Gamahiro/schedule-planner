@@ -82,22 +82,21 @@ const Task = (props) => {
         return (
             <div>
                 <form
-                    style={{ width: "100%"}}
+                    style={{ width: "100%" }}
                     className="task"
                     onSubmit={handleSubmit}
                 >
                     <input
                         type={"time"}
                         style={{}}
-                        defaultValue={props.task.getTaskTime}
+                        defaultValue={props.task.taskTime}
                         onChange={handleTaskTime}
                         name={'time'}
                     ></input>
-                <button 
-                className="button"
-                style={{backgroundColor: "red"}}
-                onClick={() => props.deleteTask(props.task.id)}>Delete</button>
-                    <div style={{display: "flex", flexDirection: "column"}}>
+                    
+                    <div style={{ display: "flex", flexDirection: "column" }}>
+                    <div>
+                        <span>complete?</span>
                         <input
                             type={"checkbox"}
                             onChange={handleTaskCompleted}
@@ -105,6 +104,7 @@ const Task = (props) => {
                             name={'completed'}
 
                         />
+                        </div>
                         <input
                             type={"text"}
                             defaultValue={props.task.taskTitle}
@@ -136,10 +136,14 @@ const Task = (props) => {
                         <option value="6">Saturday</option>
                         <option value="7">Sunday</option>
                     </select>
-
-                    <button type={"submit"}>Edit</button>
-                    <button onClick={toggleEdit}>Cancel</button>
-
+                    <div style={{display: "flex", justifyContent: "space-around"}}>
+                        <button className="material-symbols-outlined" type={"submit"}>done</button>
+                        <button className="material-symbols-outlined" onClick={toggleEdit}>close</button>
+                        <button
+                        className="button"
+                        style={{ backgroundColor: "red" }}
+                        onClick={() => props.deleteTask(props.task.id)}>Delete</button>
+                    </div>
                 </form>
             </div>
         )
@@ -196,7 +200,7 @@ const Card = (props) => {
 
     }
 
-    const sortedTasks = props.tasks.sort(function(a, b) {
+    const sortedTasks = props.tasks.sort(function (a, b) {
         return a.taskTime.localeCompare(b.taskTime)
     })
 

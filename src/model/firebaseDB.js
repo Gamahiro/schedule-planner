@@ -1,4 +1,4 @@
-import { getFirestore, collection, getDocs, setDoc, doc, query, getDoc } from 'firebase/firestore';
+import { getFirestore, collection, getDocs, setDoc, doc } from 'firebase/firestore';
 import { initializeApp } from 'firebase/app';
 import {v4 as uuidv4 } from 'uuid';
 
@@ -39,4 +39,4 @@ async function getTasks() {
 
 
 
-export {db}
+export {db, getTasks, taskToDB}

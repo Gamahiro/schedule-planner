@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import { Header } from './components/header';
 import { Schedule } from './components/schedule';
+import { DailySchedule } from './components/dailySchedule';
 import { db } from './model/firebaseDB';
 import { getDocs, collection, deleteDoc, doc, updateDoc } from 'firebase/firestore'
 
@@ -53,6 +54,7 @@ function App() {
     <div>
       <Header></Header>
       <Schedule tasks={tasks} taskRef={tasksCollectionRef} getTasks={getTasks} deleteTask={deleteTask} updateTask={updateTask}/>
+      <DailySchedule tasks={tasks} taskRef={tasksCollectionRef} getTasks={getTasks} deleteTask={deleteTask} updateTask={updateTask} />
     </div>
   );
 }

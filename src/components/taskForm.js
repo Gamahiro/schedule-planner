@@ -1,6 +1,5 @@
 import { addDoc } from "firebase/firestore";
 import React from "react";
-import { TaskObj } from "../model/task";
 
 
 const TaskForm = (props) => {
@@ -9,6 +8,7 @@ const TaskForm = (props) => {
     const [taskName, setTaskName] = React.useState('');
     const [taskTime, setTaskTime] = React.useState('');
     const [taskDescr, setTaskDescr] = React.useState('');
+    const [allDays, setAllDays] = React.useState(false);
 
     const handleTaskName = (e) => {
         setTaskName(e.target.value)
@@ -22,9 +22,32 @@ const TaskForm = (props) => {
         setTaskDescr(e.target.value)
     }
 
+    const handleTaskAllDays = () => {
+        setAllDays(!allDays);
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         props.togglePopup();
+
+        if(allDays) {
+            try {
+                for (let index = 0; index <= 7; index++) {
+                    await addDoc(props.taskRef, {
+                        taskTitle: taskName,
+                        taskTime: taskTime,
+                        taskDay: index,
+                        taskDescr: taskDescr,
+                        taskCompleted: false
+                    })  
+                }
+            } catch (error) {
+                console.error(error)
+            }
+            setAllDays(false)
+        }
+
+        if(!allDays) {
         try {
         await addDoc(props.taskRef, {
             taskTitle: taskName,
@@ -36,7 +59,8 @@ const TaskForm = (props) => {
         } catch (error) {
             console.error(error)
         }
-        props.getTasks();
+}
+props.getTasks();
 
     }
 
@@ -61,6 +85,12 @@ const TaskForm = (props) => {
                 <p>
                     <label htmlFor={"taskDescr"}>Description: </label>
                     <textarea id="taskDescr" type={""} onChange={handleTaskDescr}></textarea>
+                </p>
+
+                <p>
+                    <label htmlFor={"taskAllDays"}>Every day?</label>
+                    <input type={"checkbox"} onChange={handleTaskAllDays}></input>
+
                 </p>
 
                 <input className="button" type={"submit"}></input>

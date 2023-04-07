@@ -1,5 +1,4 @@
 import React from "react";
-import { getTasks } from "../model/firebaseDB";
 import { Card } from "./card";
 
 

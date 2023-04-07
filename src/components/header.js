@@ -7,9 +7,8 @@ const Header = () => {
         <div className="header-container">
             <ul>
                 <li className="button"><img alt="logo"/></li>
-                <li className="button">Daily</li>
-                <li className="button">Weekly</li>
-                <li className="button">Monthly</li>
+                <li className="button">Daily Tasks</li>
+                <li className="button">Create Schedule</li>
                 <li className="button">About Us</li>
                 <li className="button">Settings</li>
             </ul>
