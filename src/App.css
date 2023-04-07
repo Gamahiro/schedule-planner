@@ -18,6 +18,14 @@
   --tert-color: #3DFAFF;
 }
 
+.white-content {
+  --bg-color: #EEE5E9;
+  --sec-color: gray;
+  --border-color: black;
+  --text-color: #0F0A1F;
+  --tert-color: black;
+}
+
 body {
   background-color: var(--bg-color);
   color: var(--text-color);

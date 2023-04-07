@@ -10,7 +10,6 @@ const Settings = (props) => {
                 <li>opt2</li>
                 <li>opt3</li>
             </ul>
-
         </div>
         )
 
