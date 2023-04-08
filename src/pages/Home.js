@@ -1,29 +1,54 @@
+import { useEffect, useState } from "react";
+
+
 
 const Home = (props) => {
 
-    let taskTitle = 'not defined';
-    let taskTime = 'not defined';
+    const [taskTitle, setTaskTitle] = useState(undefined);
+    const [taskTime, setTaskTime] = useState(undefined);
+
     const currentDate = new Date();
     const currentDay = currentDate.getDay();
-    const currentDayTasks = [];
+    const dayName = currentDate.toLocaleDateString('en-US', { weekday: 'long' });
+    const currentDaysTasks = [];
 
-    if (props.tasks === undefined) return;
-    props.tasks.forEach(element => {
-        if (element.taskDay === currentDay) currentDayTasks.push(element)
-        else return
-    });
 
-    const sortedTasks = currentDayTasks.sort(function (a, b) {
-        return a.taskTime.localeCompare(b.taskTime)
-    })
+    const getTitleTime = () => {
+        if (props.tasks !== undefined) {
+            props.tasks.map((element) => {
+                if (element.taskDay !== currentDay) return null;
+                return currentDaysTasks.push(element)
+            })
+            if (currentDaysTasks.length > 1) {
+                currentDaysTasks.sort((a, b) => a.taskTime - b.taskTime)
+            } else {
+                setTaskTitle(currentDaysTasks[0].taskTitle)
+                setTaskTime(currentDaysTasks[0].taskTime)
+            }
+        }
+    }
 
-    taskTitle = sortedTasks[0].taskTitle
-    taskTime = sortedTasks[0].taskTime
+    useEffect(() => {
+        getTitleTime();
+        // eslint-disable-next-line
+    }, [])
 
     return (
         <div>
-            <h2>Welcome back, name</h2>
-            <h3> Your first task of the day is: {taskTitle} at {taskTime}</h3>
+            <h2>Happy {dayName}, name</h2>
+            <div style={{display: "flex"}}>
+                {
+                    (taskTitle !== undefined) &&
+                    <h3>Your first task of the day is: {taskTitle}&nbsp;</h3>
+                }
+                {
+                    (taskTime !== undefined) &&
+                    <>
+                    <h3>at&nbsp;</h3>
+                    <h3 style={{textDecoration: "underline"}}> {taskTime}</h3>
+                    </>
+                }
+            </div>
         </div>
     );
 }
