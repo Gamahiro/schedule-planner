@@ -29,13 +29,13 @@ if(props.tasks === undefined) return;
     return (
         <div className="schedule-container">
 
-            <Card tasks={day1} day={1} allTasks={props.tasks} taskRef={props.taskRef} getTasks={props.getTasks} deleteTask={props.deleteTask} updateTask={props.updateTask}/>
-            <Card tasks={day2} day={2} allTasks={props.tasks} taskRef={props.taskRef} getTasks={props.getTasks} deleteTask={props.deleteTask} updateTask={props.updateTask}/>
-            <Card tasks={day3} day={3} allTasks={props.tasks} taskRef={props.taskRef} getTasks={props.getTasks} deleteTask={props.deleteTask} updateTask={props.updateTask}/>
-            <Card tasks={day4} day={4} allTasks={props.tasks} taskRef={props.taskRef} getTasks={props.getTasks} deleteTask={props.deleteTask} updateTask={props.updateTask}/>
-            <Card tasks={day5} day={5} allTasks={props.tasks} taskRef={props.taskRef} getTasks={props.getTasks} deleteTask={props.deleteTask} updateTask={props.updateTask}/>
-            <Card tasks={day6} day={6} allTasks={props.tasks} taskRef={props.taskRef} getTasks={props.getTasks} deleteTask={props.deleteTask} updateTask={props.updateTask}/>
-            <Card tasks={day7} day={7} allTasks={props.tasks} taskRef={props.taskRef} getTasks={props.getTasks} deleteTask={props.deleteTask} updateTask={props.updateTask}/>
+            <Card dayTasks={day1} day={1} tasks={props.tasks} tasksUpdate={props.tasksUpdate}/>
+            <Card dayTasks={day2} day={2} tasks={props.tasks} tasksUpdate={props.tasksUpdate}/>
+            <Card dayTasks={day3} day={3} tasks={props.tasks} tasksUpdate={props.tasksUpdate}/>
+            <Card dayTasks={day4} day={4} tasks={props.tasks} tasksUpdate={props.tasksUpdate}/>
+            <Card dayTasks={day5} day={5} tasks={props.tasks} tasksUpdate={props.tasksUpdate}/>
+            <Card dayTasks={day6} day={6} tasks={props.tasks} tasksUpdate={props.tasksUpdate}/>
+            <Card dayTasks={day7} day={7} tasks={props.tasks} tasksUpdate={props.tasksUpdate}/>
         </div>
     )
 

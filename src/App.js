@@ -1,63 +1,37 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import { Header } from './components/header';
-import { Schedule } from './components/schedule';
-import { DailySchedule } from './components/dailySchedule';
-import { db } from './model/firebaseDB';
-import { getDocs, collection, deleteDoc, doc, updateDoc } from 'firebase/firestore'
-
-
-
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Home } from './pages/Home';
+import { Layout } from './pages/Layout';
+import { WeeklySchedule } from './pages/WeeklySchedule';
+import { getTasks } from './model/firebaseDB';
+import { DailyTasks } from './pages/DailyTasks';
 
 function App() {
 
   const [tasks, setTasks] = useState();
-
-  const tasksCollectionRef = collection(db, 'tasks');
-
-  const getTasks = async () => {
-    try {
-      const data = await getDocs(tasksCollectionRef);       
-      const filteredData = data.docs.map((doc) => ({
-        ...doc.data(), 
-        id: doc.id,
-      }));
-      setTasks(filteredData);
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
-  const deleteTask = async (id) => {
-    const taskDoc = doc(db, "tasks", id)
-    await deleteDoc(taskDoc);
-    getTasks();
-  }
-
-  const updateTask = async (task) => {
-    const taskDoc = doc(db, "tasks", task.id)
-    await updateDoc(taskDoc, {
-      taskTitle: task.taskTitle,
-      taskDescr: task.taskDescr,
-      taskDay: task.taskDay,
-      taskTime: task.taskTime,
-      taskCompleted: task.taskCompleted
-    })
-    getTasks();
+ 
+  const tasksUpdate = async () => {
+     setTasks(await getTasks());
   }
 
   useEffect(() => {
-    getTasks();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    tasksUpdate();
+      // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
-    <div>
-      <Header></Header>
-      <Schedule tasks={tasks} taskRef={tasksCollectionRef} getTasks={getTasks} deleteTask={deleteTask} updateTask={updateTask}/>
-      <DailySchedule tasks={tasks} taskRef={tasksCollectionRef} getTasks={getTasks} deleteTask={deleteTask} updateTask={updateTask} />
-    </div>
-  );
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />} >
+          <Route index element={<Home tasks={tasks} tasksUpdate={tasksUpdate}/>} />
+          <Route path='weeklyschedule' element={<WeeklySchedule tasks={tasks} tasksUpdate={tasksUpdate}/>} />
+          <Route path='dailytasks' element={ <DailyTasks tasks={tasks} tasksUpdate={tasksUpdate}/>} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  )
+
 }
 
 export default App;

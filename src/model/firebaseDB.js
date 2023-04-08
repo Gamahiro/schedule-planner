@@ -1,6 +1,5 @@
-import { getFirestore, collection, getDocs, setDoc, doc } from 'firebase/firestore';
+import { getFirestore, collection, getDocs, doc, deleteDoc, updateDoc } from 'firebase/firestore';
 import { initializeApp } from 'firebase/app';
-import {v4 as uuidv4 } from 'uuid';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAv5tykwkP-hDD6tF-qqJo6emkHfeCBRkU",
@@ -15,28 +14,41 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-const taskRef = collection(db, 'tasks');
 
-async function taskToDB(task) {
-    await setDoc(doc(db, 'tasks', uuidv4()), {
-        taskTitle: task.taskTitle,
-        taskTime: task.taskTime,
-        taskDay: task.taskDay,
-        taskComplete: task.completed,
-        taskDescr: task.taskDescr
-    });
-    console.log(task)
-}
+    const tasksCollectionRef = collection(db, 'tasks');
 
-async function getTasks() {
-    const taskSnapshot = await getDocs(taskRef);
-    const taskarr = [];
-    taskSnapshot.forEach((doc) => {
-        taskarr.push(doc.data())
-    })
-    return taskarr;
-}
+    const getTasks = async () => {
+        
+        try {
+            const data = await getDocs(tasksCollectionRef);
+            const filteredData = data.docs.map((doc) => ({
+                ...doc.data(),
+                id: doc.id,
+            }));
+            return filteredData;
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    const deleteTask = async (id) => {
+        const taskDoc = doc(db, "tasks", id)
+        await deleteDoc(taskDoc);
+        getTasks();
+    }
+
+    const updateTask = async (task) => {
+        const taskDoc = doc(db, "tasks", task.id)
+        await updateDoc(taskDoc, {
+            taskTitle: task.taskTitle,
+            taskDescr: task.taskDescr,
+            taskDay: task.taskDay,
+            taskTime: task.taskTime,
+            taskCompleted: task.taskCompleted
+        })
+        getTasks();
+    }
 
 
 
-export {db, getTasks, taskToDB}
+export {db, getTasks, deleteTask, updateTask, tasksCollectionRef}

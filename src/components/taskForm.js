@@ -1,5 +1,6 @@
 import { addDoc } from "firebase/firestore";
 import React from "react";
+import { tasksCollectionRef } from "../model/firebaseDB";
 
 
 const TaskForm = (props) => {
@@ -33,7 +34,7 @@ const TaskForm = (props) => {
         if(allDays) {
             try {
                 for (let index = 0; index <= 7; index++) {
-                    await addDoc(props.taskRef, {
+                    await addDoc(tasksCollectionRef, {
                         taskTitle: taskName,
                         taskTime: taskTime,
                         taskDay: index,
@@ -49,7 +50,7 @@ const TaskForm = (props) => {
 
         if(!allDays) {
         try {
-        await addDoc(props.taskRef, {
+        await addDoc(tasksCollectionRef, {
             taskTitle: taskName,
             taskTime: taskTime,
             taskDay: props.day,
@@ -60,7 +61,7 @@ const TaskForm = (props) => {
             console.error(error)
         }
 }
-props.getTasks();
+props.tasksUpdate();
 
     }
 

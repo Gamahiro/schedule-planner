@@ -12,18 +12,18 @@
 
 :root {
   --bg-color: #0F0A1F;
-  --sec-color: #7D53DE;
-  --border-color: #48BEFF;
-  --text-color: #EEE5E9;
-  --tert-color: #3DFAFF;
+  --sec-color: #293D56;
+  --border-color: #6FBBB5;
+  --text-color: #ECF1EA;
+  --tert-color: #293D56;
 }
 
 .white-content {
-  --bg-color: #EEE5E9;
-  --sec-color: gray;
-  --border-color: black;
+  --bg-color: #ECF1EA;
+  --sec-color: #6FBBB5;
+  --border-color: #0F0A1F;
   --text-color: #0F0A1F;
-  --tert-color: black;
+  --tert-color: #293D56;
 }
 
 body {
@@ -85,6 +85,7 @@ body {
   flex-direction: row;
   width: 100%;
   justify-content: space-between;
+  align-items: center;
 }
 
 .header-container > ul > li {
@@ -115,6 +116,7 @@ body {
 
 .button {
   border: 0.1em outset var(--border-color);
+  padding: 0.4em;
   box-shadow: var(--tert-color) 0px 3px 8px;
   background-color: var(--bg-color);
   color: var(--text-color);
