@@ -33,6 +33,8 @@ const Home = (props) => {
         // eslint-disable-next-line
     }, [])
 
+    console.log(props.tasks)
+
     return (
         <div>
             <h2>Happy {dayName}, name</h2>

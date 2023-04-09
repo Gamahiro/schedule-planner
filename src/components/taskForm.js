@@ -33,7 +33,7 @@ const TaskForm = (props) => {
 
         if(allDays) {
             try {
-                for (let index = 0; index <= 7; index++) {
+                for (let index = 0; index < 7; index++) {
                     await addDoc(tasksCollectionRef, {
                         taskTitle: taskName,
                         taskTime: taskTime,
