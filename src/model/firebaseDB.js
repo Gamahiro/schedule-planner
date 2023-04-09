@@ -1,5 +1,6 @@
 import { getFirestore, collection, getDocs, doc, deleteDoc, updateDoc } from 'firebase/firestore';
 import { initializeApp } from 'firebase/app';
+import { getAuth } from 'firebase/auth'
 
 const firebaseConfig = {
   apiKey: "AIzaSyAv5tykwkP-hDD6tF-qqJo6emkHfeCBRkU",
@@ -13,6 +14,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const auth = getAuth(app);
 
 
     const tasksCollectionRef = collection(db, 'tasks');
@@ -51,4 +53,4 @@ const db = getFirestore(app);
 
 
 
-export {db, getTasks, deleteTask, updateTask, tasksCollectionRef}
+export {db, getTasks, deleteTask, updateTask, tasksCollectionRef, auth}

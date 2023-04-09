@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { ThemeContext, themes } from "../model/toggleDarkmode";
+import { Auth } from "../components/auth";
 
 const Layout = () => {
 
@@ -30,6 +31,7 @@ const Layout = () => {
                         )}
                     </ThemeContext.Consumer>
                 </li>
+                <li> <Auth /></li>
             </ul>
         </div>
         <Outlet />

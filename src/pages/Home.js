@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { auth } from "../model/firebaseDB";
+
 
 
 
@@ -33,11 +35,10 @@ const Home = (props) => {
         // eslint-disable-next-line
     }, [])
 
-    console.log(props.tasks)
 
     return (
         <div>
-            <h2>Happy {dayName}, name</h2>
+            <h2>Happy {dayName}, {auth.currentUser?.email}</h2>
             <div style={{display: "flex"}}>
                 {
                     (taskTitle !== undefined) &&
