@@ -1,6 +1,6 @@
 import { auth } from "../model/firebaseDB";
-import {  signInWithEmailAndPassword, signOut } from "firebase/auth";
-import { useEffect, useState } from "react";
+import { signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Auth = () => {
@@ -34,13 +34,13 @@ const Auth = () => {
     return (
         <div>
             {
-                user &&
+                auth?.currentUser && user &&
                 <div> {auth.currentUser.email}
                     <Link to="/"><button onClick={logOut}>Sign Out</button></Link>
                 </div>
 
             }   {
-                !user &&
+                !auth?.currentUser && !user &&
                 <div>
                     <form>
                         <input type={"email"} placeholder="E-Mail" onChange={(e) => setEmail(e.target.value)} />
