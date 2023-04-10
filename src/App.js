@@ -6,27 +6,29 @@ import { Layout } from './pages/Layout';
 import { WeeklySchedule } from './pages/WeeklySchedule';
 import { getTasks } from './model/firebaseDB';
 import { DailyTasks } from './pages/DailyTasks';
+import { Register } from './pages/Register'
 
 function App() {
 
   const [tasks, setTasks] = useState();
- 
+
   const tasksUpdate = async () => {
-     setTasks(await getTasks());
+    setTasks(await getTasks());
   }
 
   useEffect(() => {
     tasksUpdate();
-      // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />} >
-          <Route index element={<Home tasks={tasks} tasksUpdate={tasksUpdate}/>} />
-          <Route path='weeklyschedule' element={<WeeklySchedule tasks={tasks} tasksUpdate={tasksUpdate}/>} />
-          <Route path='dailytasks' element={ <DailyTasks tasks={tasks} tasksUpdate={tasksUpdate}/>} />
+          <Route index element={<Home tasks={tasks} tasksUpdate={tasksUpdate} />} />
+          <Route path='weeklyschedule' element={<WeeklySchedule tasks={tasks} tasksUpdate={tasksUpdate} />} />
+          <Route path='dailytasks' element={<DailyTasks tasks={tasks} tasksUpdate={tasksUpdate} />} />
+          <Route path='register' element={<Register />} />
         </Route>
       </Routes>
     </BrowserRouter>

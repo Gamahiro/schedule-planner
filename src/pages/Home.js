@@ -38,7 +38,7 @@ const Home = (props) => {
 
     return (
         <div>
-            <h2>Happy {dayName}, {auth.currentUser?.email}</h2>
+            <h2>Happy {dayName}, {auth.currentUser?.displayName}</h2>
             <div style={{display: "flex"}}>
                 {
                     (taskTitle !== undefined) &&
