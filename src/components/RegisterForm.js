@@ -58,7 +58,7 @@ const RegisterForm = () => {
     }
 
     return (
-        <form>
+        <form autoComplete="on">
             <fieldset className="taskFieldset">
                 <input onChange={handleEmail} type="email" placeholder="E-mail" />
                 <input onChange={handleName} type={"text"} placeholder="Username" />
