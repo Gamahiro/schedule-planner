@@ -25,7 +25,7 @@ const Auth = () => {
     const logOut = async () => {
         try {
             await signOut(auth);
-            navigate('/');
+            navigate('/LandingPage');
 
         } catch (error) {
             console.error(error)
