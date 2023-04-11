@@ -18,6 +18,7 @@ const Home = (props) => {
     const navigate = useNavigate();
 
 
+
     const getTitleTime = () => {
         if (props.tasks !== undefined) {
             props.tasks.map((element) => {
@@ -36,7 +37,16 @@ const Home = (props) => {
         }
     }
 
-    useEffect(() => {
+    auth.onAuthStateChanged(user => {
+        if (user) {
+            props.tasksUpdate();
+            getTitleTime();
+        } else {
+            navigate('/');
+        }
+    })
+
+/*     useEffect(() => {
         if(!auth.currentUser) {
             navigate('/LandingPage');
         } else {
@@ -44,7 +54,7 @@ const Home = (props) => {
             getTitleTime();
         }
         // eslint-disable-next-line
-    }, [])
+    }, []) */
 
 
     

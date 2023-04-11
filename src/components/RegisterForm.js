@@ -1,7 +1,7 @@
-import { createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useState } from "react"
 import { useNavigate } from "react-router-dom";
 import { auth } from "../model/firebaseDB";
+import { signUp } from "../model/userAuthentication";
 
 const RegisterForm = () => {
 
@@ -45,10 +45,7 @@ const RegisterForm = () => {
         }
         else {
             try {
-                await createUserWithEmailAndPassword(auth, email, password);
-                await signInWithEmailAndPassword(auth, email, password);
-                await sendEmailVerification(auth.currentUser);
-                await updateProfile(auth.currentUser, { displayName: name });
+                await signUp(auth, email, password, name);
                 setUser(auth.currentUser);
                 console.log(user)
             } catch (error) {
@@ -68,7 +65,7 @@ const RegisterForm = () => {
                 className="button"
                 onClick={(e) => {
                     handleSubmit(e);
-                    navigate('/');
+                    navigate('/home');
                 }}>Register</button>
             </fieldset>
         </form>

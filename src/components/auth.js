@@ -1,7 +1,8 @@
 import { auth } from "../model/firebaseDB";
-import { signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { signOut } from "firebase/auth";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { signIn } from "../model/userAuthentication";
 
 const Auth = () => {
     const [email, setEmail] = useState('');
@@ -10,17 +11,6 @@ const Auth = () => {
     const navigate = useNavigate();
     //@todo make sign in update when user signs in, signs out or signs up
 
-
-    const signIn = async (e) => {
-        e.preventDefault()
-        try {
-            await signInWithEmailAndPassword(auth, email, password);
-            navigate('/');
-        } catch (error) {
-            console.error(error)
-            alert('wrong password')
-        }
-    }
 
     const logOut = async () => {
         try {
@@ -50,7 +40,7 @@ const Auth = () => {
                         <fieldset className="taskFieldset">
                             <input type={"email"} placeholder="E-Mail" onChange={(e) => setEmail(e.target.value)} />
                             <input type={"password"} placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
-                            <button className="button" onClick={signIn}> Sign In </button>
+                            <button className="button" onClick={() => {signIn(auth, email, password); navigate('/home')}}> Sign In </button>
                         </fieldset>
                     </form>
                 </div>
