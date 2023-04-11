@@ -1,3 +1,4 @@
+import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { Auth } from "../components/auth"
 import { RegisterForm } from "../components/RegisterForm"
@@ -10,11 +11,14 @@ const LandingPage = () => {
 
     const navigate = useNavigate();
 
-    auth.onAuthStateChanged(user => {
-        if (user) {
-            navigate('home');
-        }
+    useEffect(() => {
+        auth.onAuthStateChanged(user => {
+            if (user) {
+                navigate('home');
+            }
+        })
     })
+    
 
 
     return (<>

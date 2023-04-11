@@ -21,6 +21,7 @@ let tasksCollectionRef = '';
 auth.onAuthStateChanged(user => {
     if(user) {
         tasksCollectionRef = collection(db, auth.currentUser.uid);
+        console.log('check')
     }
 })
 
@@ -39,13 +40,13 @@ const getTasks = async () => {
 }
 
 const deleteTask = async (id) => {
-    const taskDoc = doc(db, "tasks", id)
+    const taskDoc = doc(db, auth.currentUser.uid, id)
     await deleteDoc(taskDoc);
     getTasks();
 }
 
 const updateTask = async (task) => {
-    const taskDoc = doc(db, "tasks", task.id)
+    const taskDoc = doc(db, auth.currentUser.uid, task.id)
     await updateDoc(taskDoc, {
         taskTitle: task.taskTitle,
         taskDescr: task.taskDescr,

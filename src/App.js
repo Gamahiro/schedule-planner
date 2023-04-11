@@ -13,15 +13,21 @@ function App() {
 
   const [tasks, setTasks] = useState();
 
-  auth.onAuthStateChanged(async (user) => {
-    if(user) {
-      await tasksUpdate()
-    }
+  useEffect(() => {
+    auth.onAuthStateChanged(async (user) => {
+      if(user) {
+        await tasksUpdate()
+        console.log(user)
+      } 
+    }) 
+  }, [])
 
-  })
+
+
   const tasksUpdate = async () => {
 
     setTasks(await getTasks());
+    console.log(tasks)
   }
 
 

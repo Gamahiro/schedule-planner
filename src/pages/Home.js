@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../model/firebaseDB";
 
-
+//@todo solve useEffect async infinite loop >:@@@@@@@
 
 
 const Home = (props) => {
@@ -37,14 +37,19 @@ const Home = (props) => {
         }
     }
 
-    auth.onAuthStateChanged(user => {
-        if (user) {
-            props.tasksUpdate();
-            getTitleTime();
-        } else {
-            navigate('/');
-        }
-    })
+    useEffect(() => {
+        auth.onAuthStateChanged(user => {
+            if (user) {
+                props.tasksUpdate();
+                getTitleTime();
+                console.log('tasks updated')
+            } else {
+                navigate('/');
+            }
+        })
+    }, [])
+
+    
 
 /*     useEffect(() => {
         if(!auth.currentUser) {
