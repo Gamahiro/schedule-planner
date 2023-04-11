@@ -6,7 +6,8 @@ import { Layout } from './pages/Layout';
 import { WeeklySchedule } from './pages/WeeklySchedule';
 import { getTasks } from './model/firebaseDB';
 import { DailyTasks } from './pages/DailyTasks';
-import { Register } from './pages/Register'
+import { Register } from './pages/Register';
+import { LandingPage } from './pages/LandingPage';
 
 function App() {
 
@@ -30,6 +31,7 @@ function App() {
           <Route path='dailytasks' element={<DailyTasks tasks={tasks} tasksUpdate={tasksUpdate} />} />
           <Route path='register' element={<Register />} />
         </Route>
+          <Route path='landingpage' element={<LandingPage />} />
       </Routes>
     </BrowserRouter>
   )

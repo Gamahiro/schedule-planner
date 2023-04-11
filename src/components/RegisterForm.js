@@ -64,7 +64,9 @@ const RegisterForm = () => {
                 <input onChange={handleName} type={"text"} placeholder="Username" />
                 <input onChange={handlePassword} type={"password"} placeholder="Password" />
                 <input onChange={handleConfirmPassword} type={"password"} placeholder="Confirm Password" />
-                <button onClick={(e) => {
+                <button 
+                className="button"
+                onClick={(e) => {
                     handleSubmit(e);
                     navigate('/');
                 }}>Register</button>

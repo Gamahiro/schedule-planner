@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { auth } from "../model/firebaseDB";
 
 
@@ -14,6 +15,8 @@ const Home = (props) => {
     const dayName = currentDate.toLocaleDateString('en-US', { weekday: 'long' });
     const currentDaysTasks = [];
 
+    const navigate = useNavigate();
+
 
     const getTitleTime = () => {
         if (props.tasks !== undefined) {
@@ -21,20 +24,30 @@ const Home = (props) => {
                 if (element.taskDay !== currentDay) return null;
                 return currentDaysTasks.push(element)
             })
-            if (currentDaysTasks.length > 1) {
-                currentDaysTasks.sort((a, b) => a.taskTime - b.taskTime)
-            } else {
-                setTaskTitle(currentDaysTasks[0].taskTitle)
-                setTaskTime(currentDaysTasks[0].taskTime)
-            }
+            if(currentDaysTasks[0] !== undefined) {
+                if (currentDaysTasks.length > 1) {
+                    currentDaysTasks.sort((a, b) => a.taskTime - b.taskTime)
+                } else {
+                    setTaskTitle(currentDaysTasks[0].taskTitle)
+                    setTaskTime(currentDaysTasks[0].taskTime)
+                }
+            } else return
+            
         }
     }
 
     useEffect(() => {
-        getTitleTime();
+        if(!auth.currentUser) {
+            navigate('/LandingPage');
+        } else {
+            props.tasksUpdate();
+            getTitleTime();
+        }
         // eslint-disable-next-line
     }, [])
 
+
+    
 
     return (
         <div>
