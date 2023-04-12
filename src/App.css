@@ -16,6 +16,7 @@
   --border-color: #6FBBB5;
   --text-color: #ECF1EA;
   --tert-color: #293D56;
+  --shadow-color: #6fbbb586;
 }
 
 .white-content {
@@ -24,42 +25,43 @@
   --border-color: #0F0A1F;
   --text-color: #0F0A1F;
   --tert-color: #293D56;
+  --shadow-color: #0f0a1f85;
+}
+
+html {
+  height: 100%;
+
 }
 
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 1em;
   font-family: 'Tilt Neon', cursive;
+  height: 100%;
+
 }
 
 #root {
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100%;
+
 }
 
 .card-container {
   width: 9em;
-  height: 300px;
-  border: 2px outset var(--border-color);
-  box-shadow: var(--tert-color) 0px 3px 8px;
+  height: 100%;
+  border-left: 0.1em outset var(--border-color);
   background-color: var(--sec-color);
 }
 
-/* 
-  filter: brightness(80%);
-  transition: 0.2s ease-in-out;
-
-.card-container:hover {
-  filter: brightness(100%);
-} */
+.card-container:first-child {
+  border: none;
+}
 
 .card-title {
-  border-bottom: 2px outset var(--border-color);
+  border-bottom: 0.1em outset var(--border-color);
   width: 100%;
   text-align: center;
   background-color: var(--sec-color);
@@ -67,20 +69,23 @@ body {
 
 .schedule-container {
   display: flex;
-  gap: 1em;
+  border: 0.1em outset var(--border-color);
+  box-shadow: var(--tert-color) 0px 3px 8px;
+  margin-top: 1em;
+  height: 70%;
 }
 
 .header-container {
   background-color: var(--sec-color);
   height: 3em;
-  margin-bottom: 1em;
-  border: 0.1em outset var(--border-color);
   padding-left: 0.5em;
   padding-right: 0.5em;
-  box-shadow: rgba(255, 255, 255, 0.568) 0px 3px 8px;
+  box-shadow: var(--shadow-color) 0px 6px 24px 0px, var(--shadow-color) 0px 0px 0px 1px;
   display: flex;
   justify-content: center;
   align-items: center;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .header-container > ul{
@@ -100,7 +105,7 @@ body {
 
 .task {
   background-color: var(--bg-color);
-  border-bottom: 0.2em outset var(--border-color);
+  border-top: 0.1em solid var(--border-color);
   transition: 0.5s ease-in-out;
 }
 
@@ -121,9 +126,8 @@ body {
 }
 
 .button {
-  border: 0.1em outset var(--border-color);
   padding: 0.4em;
-  box-shadow: var(--tert-color) 0px 3px 8px;
+  box-shadow: var(--shadow-color) 1.95px 1.95px 2.6px;
   background-color: var(--bg-color);
   color: var(--text-color);
   user-select: none;
@@ -132,16 +136,24 @@ body {
 
 .button:active {
   filter: brightness(80%);
-  border: 0.1em inset var(--border-color);
 
 }
 
-.button:hover, .expandbtn:hover {
+.button:hover, .expandbtn:hover, .leftNavbar:hover {
   cursor: pointer;
 }
 
 .expandbtn {
   user-select: none;
+}
+
+.leftNavbar {
+color: var(--text-color);
+text-decoration: none;
+}
+
+.leftNavbar:hover {
+  text-decoration: underline;
 }
 
 .task {

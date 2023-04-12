@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { signIn } from "../model/userAuthentication";
 
-const Auth = () => {
+const Auth = (props) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -40,7 +40,7 @@ const Auth = () => {
                         <fieldset className="taskFieldset">
                             <input type={"email"} placeholder="E-Mail" onChange={(e) => setEmail(e.target.value)} />
                             <input type={"password"} placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
-                            <button className="button" onClick={() => {signIn(auth, email, password); navigate('/home')}}> Sign In </button>
+                            <button className="button" onClick={() => {signIn(auth, email, password); navigate('/home');}}> Sign In </button>
                         </fieldset>
                     </form>
                 </div>

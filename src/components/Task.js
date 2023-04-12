@@ -156,7 +156,7 @@ const Task = (props) => {
         return (
             <div
                 className="task">
-                <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", borderBottom: "0.1em outset var(--border-color)" }}>
                     <div style={{ textAlign: "center", textDecoration: "underline" }}>{props.task.taskTime}</div>
                     <span className="material-symbols-outlined expandbtn" onClick={toggleEdit}>edit_note</span>
                 </div>

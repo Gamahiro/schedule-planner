@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../model/firebaseDB";
 
-//@todo solve useEffect async infinite loop >:@@@@@@@
 
 
 const Home = (props) => {
@@ -40,6 +39,7 @@ const Home = (props) => {
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(user => {
             if (user) {
+                props.tasksUpdate();
                 getTitleTime();
                 console.log('got title time')
             } else {
