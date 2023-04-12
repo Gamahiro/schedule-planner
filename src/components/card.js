@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { TaskForm } from "./taskForm";
 import { Task } from "./Task";
 
@@ -30,6 +30,8 @@ const Card = (props) => {
     const sortedTasks = props.dayTasks.sort(function (a, b) {
         return a.taskTime.localeCompare(b.taskTime)
     })
+
+
 
     return (
         <div className="card-container">

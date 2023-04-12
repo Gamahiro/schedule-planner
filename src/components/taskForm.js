@@ -1,5 +1,5 @@
 import { addDoc } from "firebase/firestore";
-import React from "react";
+import React, { useEffect } from "react";
 import { tasksCollectionRef } from "../model/firebaseDB";
 
 
@@ -62,8 +62,8 @@ const TaskForm = (props) => {
         }
 }
 props.tasksUpdate();
-
     }
+
 
     return (
         <form className="taskForm" onSubmit={handleSubmit}>

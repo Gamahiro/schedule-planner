@@ -38,15 +38,15 @@ const Home = (props) => {
     }
 
     useEffect(() => {
-        auth.onAuthStateChanged(user => {
+        const unsubscribe = auth.onAuthStateChanged(user => {
             if (user) {
-                props.tasksUpdate();
                 getTitleTime();
-                console.log('tasks updated')
+                console.log('got title time')
             } else {
                 navigate('/');
             }
         })
+        return unsubscribe();
     }, [])
 
     

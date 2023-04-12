@@ -14,20 +14,20 @@ function App() {
   const [tasks, setTasks] = useState();
 
   useEffect(() => {
-    auth.onAuthStateChanged(async (user) => {
+    const unsubscribe = auth.onAuthStateChanged(async (user) => {
       if(user) {
-        await tasksUpdate()
-        console.log(user)
+        setTasks(await getTasks());
+        console.log('updated tasks')
       } 
     }) 
+    return unsubscribe();
   }, [])
 
 
 
   const tasksUpdate = async () => {
-
-    setTasks(await getTasks());
-    console.log(tasks)
+    setTasks(await getTasks())
+    console.log('tasks updated appjs')
   }
 
 
