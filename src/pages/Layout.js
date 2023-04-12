@@ -18,15 +18,15 @@ const Layout = () => {
                     <li> <Link to="/" className="button">Home</Link></li>
                     <li>  </li>
                     <li> </li>
-                    <li style={{borderLeft: '0.1em solid var(--border-color)', borderRight: '0.1em solid var(--border-color)'}}> {auth?.currentUser?.displayName} <div 
+                    <li style={{border: '0.1em solid var(--border-color)', backgroundColor: "var(--bg-color)"}}> {auth?.currentUser?.displayName} <div 
                     onClick={async () => {await signOut(auth); navigate('/')}}
-                    className='leftNavbar'
+                    className='leftNavbarLink'
                     >Sign out</div> </li>
                     <li>
                         <ThemeContext.Consumer>
                             {({ changeTheme }) => (
                                 <div
-                                    style={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+                                    style={{ display: "flex", justifyContent: "center", alignItems: "center", borderRadius: "50%" }}
                                     className="button"
                                     onClick={() => {
                                         setDarkMode(!darkMode);
@@ -43,9 +43,9 @@ const Layout = () => {
             </nav>
             <div style={{ display: "flex", justifyContent: "flex-start", width: "100%", height: "100%"}}>
 
-                <ul style={{ listStyle: "none", display: "flex", flexDirection: "column",  padding: "0.4em", boxShadow: "var(--shadow-color) 1.95px 1.95px 2.6px", margin: "0", backgroundColor: "var(--sec-color)" }}>
-                    <li><Link className="leftNavbar" to="/WeeklySchedule"> Weekly </Link></li>
-                    <li><Link className="leftNavbar" to="/DailyTasks"> Daily Tasks</Link></li>
+                <ul className="leftNavbar">
+                    <li><Link className="leftNavbarLink" to="/WeeklySchedule"> Weekly </Link></li>
+                    <li><Link className="leftNavbarLink" to="/DailyTasks"> Daily Tasks</Link></li>
                     <li></li>
                     <li></li>
                 </ul>
