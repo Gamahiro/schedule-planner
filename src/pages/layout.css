@@ -30,9 +30,9 @@
 .navbar {
     list-style: none;
     display: flex;
-    flex-direction: column;
+    gap: 1em;
     padding-left: 0.5em;
-    box-shadow: var(--shadow-color) 1.95px 1.95px 2.6px;
+    box-shadow: var(--shadow-color) 0px 1px 0px inset;
     margin: 0;
     background-color: var(--sec-color);
 }
@@ -51,10 +51,12 @@
     display: flex;
     justify-content: center;
     width: 100%;
+    height: 100%;
 }
 
 .inner-body {
     display: flex;
+    flex-direction: column;
     justify-content: flex-start;
     width: 100%;
     height: 100%;

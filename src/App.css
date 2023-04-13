@@ -52,10 +52,10 @@ body {
 
 
 .card-container {
-  width: 7em;
+  flex: 1;
   height: 100%;
   border-left: 0.1em outset var(--border-color);
-  background-color: var(--sec-color);
+  background-color: var(--bg-color);
 }
 
 .card-container:first-child {
@@ -73,8 +73,9 @@ body {
   display: flex;
   border: 0.1em outset var(--border-color);
   box-shadow: var(--tert-color) 0px 3px 8px;
-  margin-top: 2em;
-  height: 70%;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 
