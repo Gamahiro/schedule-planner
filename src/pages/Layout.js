@@ -45,10 +45,10 @@ const Layout = () => {
             <div className="inner-body" >
 
                 <ul className="navbar">
-                    <li><Link className="navbar-link" to="/WeeklySchedule"> Weekly </Link></li>
-                    <li><Link className="navbar-link" to="/DailyTasks"> Daily Tasks</Link></li>
-                    <li></li>
-                    <li></li>
+                    <li><Link className="navbar-link" to="/WeeklySchedule"> Weekly Schedule </Link></li>
+                    <li><Link className="navbar-link" to="/DailyTasks"> Todays Tasks</Link></li>
+                    <li>About us</li>
+                    <li>Contact us</li>
                 </ul>
                 <div className="outlet-container">
                     <Outlet />

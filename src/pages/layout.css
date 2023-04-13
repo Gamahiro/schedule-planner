@@ -30,6 +30,7 @@
 .navbar {
     list-style: none;
     display: flex;
+    justify-content: center;
     gap: 1em;
     padding-left: 0.5em;
     box-shadow: var(--shadow-color) 0px 1px 0px inset;
