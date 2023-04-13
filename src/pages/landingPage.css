@@ -1,0 +1,28 @@
+.landingpage-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  
+  .landingpage-content {
+    background-color: #0f0a1fcc;
+    padding: 1em;
+    border: 0.2em solid var(--text-color);
+  }
+
+  .landingpage-text > h1 {
+    text-align: center;
+  }
+
+  .login-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3em;
+    margin-bottom: 1em;
+    text-align: center;
+  }

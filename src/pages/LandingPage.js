@@ -4,6 +4,7 @@ import { Auth } from "../components/auth"
 import { RegisterForm } from "../components/RegisterForm"
 import { auth } from "../model/firebaseDB"
 import leaves from "../assets/leaves-6975462.svg"
+import './landingPage.css'
 
 
 
@@ -23,15 +24,15 @@ const LandingPage = () => {
 
 
     return (
-        <div className="landingpage-container" style={{ height: "100%", width: "100%", backgroundImage: `url(${leaves})`, backgroundSize: "contain", backgroundRepeat: "no-repeat" }}>
+        <div className="landingpage-container" style={{  backgroundImage: `url(${leaves})` }}>
             <div className="landingpage-content">
-                <div>
-                    <h1 style={{ textAlign: "center" }}>Schedule Planner</h1>
+                <div className="landingpage-text">
+                    <h1>Schedule Planner</h1>
                     <div>We aim to give you the best experience for creating and tracking a schedule.</div>
                 </div>
 
 
-                <div style={{ display: "flex", justifyContent: "space-between", marginTop: "3em", marginBottom: "1em" }}>
+                <div className="login-container">
                     <div>
                         <div>Sign in</div>
                         <Auth />

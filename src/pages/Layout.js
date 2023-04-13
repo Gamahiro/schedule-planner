@@ -4,6 +4,7 @@ import { Link, Outlet, useNavigate } from "react-router-dom";
 import { Auth } from "../components/auth";
 import { auth } from "../model/firebaseDB";
 import { ThemeContext, themes } from "../model/toggleDarkmode";
+import './layout.css';
 
 const Layout = () => {
 
@@ -18,9 +19,9 @@ const Layout = () => {
                     <li> <Link to="/" className="button">Home</Link></li>
                     <li>  </li>
                     <li> </li>
-                    <li style={{border: '0.1em solid var(--border-color)', backgroundColor: "var(--bg-color)"}}> {auth?.currentUser?.displayName} <div 
+                    <li className="signedIn-container"> {auth?.currentUser?.displayName} <div 
                     onClick={async () => {await signOut(auth); navigate('/')}}
-                    className='leftNavbarLink'
+                    className='navbar-link'
                     >Sign out</div> </li>
                     <li>
                         <ThemeContext.Consumer>
@@ -41,15 +42,15 @@ const Layout = () => {
                     </li>
                 </ul>
             </nav>
-            <div style={{ display: "flex", justifyContent: "flex-start", width: "100%", height: "100%"}}>
+            <div className="inner-body" >
 
-                <ul className="leftNavbar">
-                    <li><Link className="leftNavbarLink" to="/WeeklySchedule"> Weekly </Link></li>
-                    <li><Link className="leftNavbarLink" to="/DailyTasks"> Daily Tasks</Link></li>
+                <ul className="navbar">
+                    <li><Link className="navbar-link" to="/WeeklySchedule"> Weekly </Link></li>
+                    <li><Link className="navbar-link" to="/DailyTasks"> Daily Tasks</Link></li>
                     <li></li>
                     <li></li>
                 </ul>
-                <div style={{display: "flex", justifyContent: "center", width: "100%"}}>
+                <div className="outlet-container">
                     <Outlet />
                 </div>
             </div>
