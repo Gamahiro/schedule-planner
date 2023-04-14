@@ -21,10 +21,15 @@ const DailySchedule = (props) => {
     return (
             
             <div>
+            <h1>{currentDate.toLocaleDateString('en-US', { weekday: 'long' })}</h1>
                 {
+                    
                     sortedTasks.map((element, index) => {
                         return (
-                            <Task key={index} task={element} tasksUpdate={props.tasksUpdate}/>
+                            <div>
+                                {element.taskTitle} at {element.taskTime}
+                                <div>{element.taskDescr}</div>
+                            </div>
                             )
                     })
                 }

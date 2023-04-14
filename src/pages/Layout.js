@@ -19,7 +19,7 @@ const Layout = () => {
                     <li> <Link to="/" className="button">Home</Link></li>
                     <li>  </li>
                     <li> </li>
-                    <li className="signedIn-container"> {auth?.currentUser?.displayName} <div 
+                    <li className="signedIn-container"> Signed in as: {auth?.currentUser?.displayName} <div 
                     onClick={async () => {await signOut(auth); navigate('/')}}
                     className='navbar-link'
                     >Sign out</div> </li>

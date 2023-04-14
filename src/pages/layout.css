@@ -9,7 +9,7 @@
     align-items: center;
     box-sizing: border-box;
     width: 100%;
-    height: 5em;
+    height: 3.5em;
 }
 
 .header-container>ul {
@@ -35,7 +35,8 @@
     padding-left: 0.5em;
     box-shadow: var(--shadow-color) 0px 1px 0px inset;
     margin: 0;
-    background-color: var(--sec-color);
+    background-color: var(--bg-color);
+    padding: 0.3em;
 }
 
 .navbar-link {
@@ -66,5 +67,4 @@
 .signedIn-container {
     background-color: var(--bg-color);
     box-shadow: var(--shadow-color) 1.95px 1.95px 2.6px;
-
 }

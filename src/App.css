@@ -72,7 +72,6 @@ body {
 .schedule-container {
   display: flex;
   border: 0.1em outset var(--border-color);
-  box-shadow: var(--tert-color) 0px 3px 8px;
   height: 100%;
   width: 100%;
   box-sizing: border-box;
@@ -84,6 +83,7 @@ body {
   background-color: var(--bg-color);
   border-top: 0.1em solid var(--border-color);
   transition: 0.5s ease-in-out;
+  flex: 1;
 }
 
 .taskForm {
