@@ -1,7 +1,6 @@
 import { signOut } from "firebase/auth";
 import React, { useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
-import { Auth } from "../components/auth";
 import { auth } from "../model/firebaseDB";
 import { ThemeContext, themes } from "../model/toggleDarkmode";
 import './layout.css';

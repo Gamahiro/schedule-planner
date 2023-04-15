@@ -1,5 +1,5 @@
 import React from "react";
-import { Task } from "./Task"
+import '../pages/dailySchedule.css';
 
 const DailySchedule = (props) => {
 
@@ -21,13 +21,13 @@ const DailySchedule = (props) => {
     return (
             
             <div>
-            <h1>{currentDate.toLocaleDateString('en-US', { weekday: 'long' })}</h1>
+            <h1>Happy {currentDate.toLocaleDateString('en-US', { weekday: 'long' })}</h1>
                 {
                     
                     sortedTasks.map((element, index) => {
                         return (
-                            <div>
-                                {element.taskTitle} at {element.taskTime}
+                            <div className="task-daily">
+                                <h3 className="task-title">{element.taskTitle} at {element.taskTime} </h3>
                                 <div>{element.taskDescr}</div>
                             </div>
                             )

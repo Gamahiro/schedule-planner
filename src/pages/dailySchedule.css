@@ -1,0 +1,12 @@
+
+
+.task-daily {
+    border: 0.1em solid var(--border-color);
+    padding: 0.3em;
+}
+
+.task-title {
+    margin: 0;
+    text-align: center;
+}
+
